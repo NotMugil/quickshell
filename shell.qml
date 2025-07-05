@@ -3,6 +3,7 @@ import QtQuick
 import Quickshell.Wayland
 import Quickshell.Hyprland
 import QtMultimedia
+import Quickshell.Services.UPower 
 
 Variants {
   model: Quickshell.screens
@@ -21,20 +22,49 @@ Variants {
     height: HyprlandMonitor.height
     width: HyprlandMonitor.width
 
-
     Rectangle {
       anchors.fill: parent
       color: "black"
       
-      Video {      
-          id: wallpaper
-          anchors.fill: parent
-          autoPlay: true
-          muted: true
-          loops: MediaPlayer.Infinite
-          source: "root:/wall.mp4"
+      Loader {
+        anchors.fill: parent
+
+        function getWallpaperState(){
+          var powerprofile = PowerProfiles.profile
+          console.log("Current power profile:", powerprofile)
+          if (powerprofile == "0" ) {
+            return image_wallpaper
+          }
+          else {
+            return video_wallpaper
+          }
+        }
+
+        sourceComponent: getWallpaperState()
+
+        Component {
+          id: video_wallpaper
+            Video {      
+                id: wallpaper
+                anchors.fill: parent
+                autoPlay: true
+                muted: true
+                loops: MediaPlayer.Infinite
+                source: "root:/assets/blue.mp4"
+                fillMode : VideoOutput.PreserveAspectCrop 
+            }
+        }
+
+        Component {
+          id: image_wallpaper
+            Image {      
+                id: wallpaper
+                anchors.fill: parent
+                source: "root:/assets/wall.jpg"
+                fillMode: Image.PreserveAspectCrop
+            }
+        }
       }
     }
-
   }
 }
