@@ -28,18 +28,6 @@ Variants {
       
       Loader {
         anchors.fill: parent
-
-        function getWallpaperState(){
-          var powerprofile = PowerProfiles.profile
-          console.log("Current power profile:", powerprofile)
-          if (powerprofile == "0" ) {
-            return image_wallpaper
-          }
-          else {
-            return video_wallpaper
-          }
-        }
-
         sourceComponent: getWallpaperState()
 
         Component {
@@ -57,12 +45,30 @@ Variants {
 
         Component {
           id: image_wallpaper
-            Image {      
+            Video {      
                 id: wallpaper
                 anchors.fill: parent
-                source: "root:/assets/wall.jpg"
-                fillMode: Image.PreserveAspectCrop
+                autoPlay: false
+                muted: true
+                loops: MediaPlayer.Infinite
+                source: "root:/assets/blue.mp4"
+                fillMode : VideoOutput.PreserveAspectCrop 
+                Component.onCompleted: {
+                  wallpaper.play()
+                  wallpaper.pause()
+                }
             }
+        }
+
+        function getWallpaperState(){
+          var powerprofile = PowerProfiles.profile
+          console.log("Current power profile:", powerprofile)
+          if (powerprofile == "0" ) {
+            return image_wallpaper
+          }
+          else {
+            return video_wallpaper
+          }
         }
       }
     }
