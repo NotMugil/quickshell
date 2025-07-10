@@ -33,6 +33,36 @@ Scope {
         anchors.fill: parent
       }
 
+      FastBlur {
+        source: wallpaperContent
+        radius: 32
+        anchors.fill: wallpaperContent
+      }
+
+      Item { // Defines the wallpaper area without blur
+        id: clearCenter
+        anchors.fill: parent
+        clip: true
+
+        Rectangle {
+          id: clearMask
+          anchors.fill: parent
+          anchors.margins: Config.borderThickness
+          anchors.topMargin: Config.barPosition === "top" ? Config.barHeight : Config.borderThickness
+          anchors.bottomMargin: Config.barPosition === "bottom" ? Config.barHeight : Config.borderThickness
+          radius: Config.borderRadius
+          color: "transparent" 
+        }
+
+        WallpaperComponent {
+          id: wallpaperContentClear
+          anchors.fill: parent
+          anchors.margins: Config.borderThickness
+          anchors.topMargin: Config.barPosition === "top" ? Config.barHeight : Config.borderThickness
+          anchors.bottomMargin: Config.barPosition === "bottom" ? Config.barHeight : Config.borderThickness
+        }
+      }
+
       mask: Region {
           x: 0
           y: 0
@@ -70,7 +100,7 @@ Scope {
         Rectangle {
             id: borderRect
             anchors.fill: parent
-            color: Qt.alpha("#000000", 0.941)
+            color: Config.barColor
             visible: false
         }
 
@@ -81,7 +111,6 @@ Scope {
           visible: false
 
           Rectangle {
-            id: borderBlur
             anchors.fill: parent
             anchors.margins: Config.borderThickness
             anchors.topMargin: Config.barPosition === "top" ? Config.barHeight : Config.borderThickness
