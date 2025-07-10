@@ -1,1 +1,3 @@
-<samp> i dont know what im doing </samp>
+![preview](./.github/preview.png)
+
+<samp> for now </samp>
