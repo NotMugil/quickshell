@@ -10,7 +10,9 @@ Singleton {
 
   readonly property real barHeight: 30
   readonly property real barWidth: 0
-  readonly property real borderThickness: 0
+  readonly property real borderThickness: 8
   readonly property real borderRadius: 10
+  readonly property string barPosition: "bottom" // top or bottom
 }
+
 

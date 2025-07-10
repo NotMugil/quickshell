@@ -1,20 +1,51 @@
 import Quickshell
-import QtQuick 
+import Quickshell.Io
+import QtQuick
+import QtQuick.Layouts
+import Qt5Compat.GraphicalEffects
 
-PanelWindow {
-  anchors {
-    top: true
-    left: true
-    right: true
-  }
+import "root:/"
 
-  implicitHeight: 30
-  color: "transparent"
+Scope {
+  id: bar
 
-  Text {
-    // center the bar in its parent component (the window)
-    anchors.centerIn: parent
-    color: "white"
-    text: "hello world"
+  Variants {
+    model: Quickshell.screens
+
+    PanelWindow {
+      property var modelData
+      screen: modelData
+
+      color: "transparent"
+      implicitHeight: Config.barHeight
+      
+      anchors {
+        top: Config.barPosition === "top" ? true : false
+        bottom: Config.barPosition === "bottom" ? true : false
+        left: true
+        right: true
+      }
+
+      Rectangle {
+        id: barBase
+        color: "transparent"
+
+        RowLayout {
+          id: row
+          anchors.fill: parent
+          spacing: 6
+          
+          Rectangle {
+            anchors.right: row.right
+            Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
+            Layout.fillHeight: true
+          }
+        }
+      }
+
+      ClockWidget {
+        anchors.centerIn: parent
+      }
+    }
   }
 }
