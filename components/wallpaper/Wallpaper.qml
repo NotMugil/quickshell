@@ -4,8 +4,8 @@ import Quickshell.Wayland
 import QtQuick.Effects
 import Qt5Compat.GraphicalEffects
 
-import "root:/"
-import "."
+import qs.config
+import qs.components.wallpaper
 
 Scope {
   id: wallpaper

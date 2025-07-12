@@ -16,7 +16,6 @@ Singleton {
 
   readonly property real barOpacity: 0.861
   readonly property color barColor: Qt.alpha("#000000", barOpacity)
-
 }
 
 
