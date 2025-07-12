@@ -5,13 +5,15 @@ import Quickshell.Widgets
 import Quickshell.Io
 import Quickshell.Services.SystemTray
 
-import "root:/"
+import qs.config
 
 Rectangle {
   id: systray
+
+  visible: SystemTray.items.values.length
+  height: 10
+
   color: "transparent"
-  width: parent.width
-  implicitHeight: Config.barHeight
 
   RowLayout {
     id: systray_row
@@ -33,6 +35,10 @@ Rectangle {
         QsMenuAnchor {
           id: menu
           menu: sysitem.modelData.menu
+          anchor.window: systray
+					anchor.rect.x: 1200
+					anchor.rect.y: 3000
+					anchor.rect.height: sysitem.height
         }
 
         MouseArea {

@@ -1,7 +1,6 @@
 import QtQuick
+import qs.components.common
 
-Text {
-  font.family: "JetBrainsMono Nerd Font"
-  color: "white" 
+StyledText {
   text: Time.time
 }

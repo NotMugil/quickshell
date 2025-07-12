@@ -3,7 +3,7 @@ import Quickshell
 import QtMultimedia
 import Quickshell.Services.UPower 
 
-import "root:/"
+import qs.config
 
 Rectangle {
     anchors.fill: parent

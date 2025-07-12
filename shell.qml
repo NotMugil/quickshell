@@ -4,9 +4,9 @@ import QtQuick.Controls
 import QtQuick.Layouts
 import QtQuick.Window
 
-import "root:/"
-import "./components/wallpaper/"
-import "./components/bar/"
+import qs.config
+import qs.components.wallpaper
+import qs.components.bar
 
 
 ShellRoot {
