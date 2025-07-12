@@ -1,6 +1,6 @@
 ![preview](./.github/preview.png)
 
-<samp> for now </samp>
+<samp> so far </samp>
 
 #### tasks (todo)
 - [ ] finish the simple bar
