@@ -48,16 +48,17 @@ Scope {
           id: row
           anchors.fill: parent
           spacing: 6
-          Layout.leftMargin: 10
+
+
 
           // Left widgets
           Rectangle {
             id: leftbarBase
             color: "transparent"
-            width: leftrow.implicitWidth + 10
+            width: leftrow.implicitWidth
             Layout.fillHeight: true
             Layout.alignment: Qt.AlignVCenter | Qt.AlignLeft
-            //anchors.left: row.left
+            Layout.leftMargin: Config.borderThickness
 
             RowLayout {
               id: leftrow
@@ -80,10 +81,18 @@ Scope {
           Rectangle {
             id: rightbarBase
             color: "transparent"
-            width: leftrow.implicitWidth + 20
+            width: rightrow.implicitWidth 
             Layout.fillHeight: true
             Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
-            //anchors.right: row.right
+            Layout.rightMargin: Config.borderThickness
+
+            RowLayout {
+              id: rightrow
+              anchors.fill: parent
+              spacing: 20
+
+              PowerButton {}
+            }
 
           }
         }

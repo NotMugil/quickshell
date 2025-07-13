@@ -14,7 +14,7 @@ Singleton {
   readonly property real borderThickness: 8
   readonly property real borderRadius: 10
 
-  readonly property real barOpacity: 0.861
+  readonly property real barOpacity: 0.903
   readonly property color barColor: Qt.alpha("#000000", barOpacity)
 }
 

@@ -19,8 +19,17 @@ Rectangle {
     acceptedButtons: Qt.LeftButton | Qt.RightButton
     anchors.fill: parent
     cursorShape: Qt.PointingHandCursor
+    hoverEnabled: true
     onClicked: {
       console.log("Clock clicked!")
+    }
+
+    onEntered: {
+      clock.text = Time.date
+    }
+
+    onExited: {
+      clock.text = Time.time
     }
   }
 }

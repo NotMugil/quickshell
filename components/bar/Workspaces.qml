@@ -10,7 +10,7 @@ import qs.components.common
 Rectangle {
   id: workspacesroot
   color: "transparent"
-  height: Config.barHeight / 1.5
+  height: Config.barHeight
   width: workspacesrow.implicitWidth 
   
   RowLayout {
