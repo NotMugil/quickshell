@@ -12,14 +12,14 @@ Rectangle {
   anchors.left: parent.left
   color: "transparent"
   width: homeicon.implicitWidth + 5
-  height: Config.barHeight
+  height: Config.barHeight / 1.5
 
   Icon {
     id: homeicon
     icon: "tile_medium" 
     fill: 1
     grad: 0
-    font.pixelSize: 18
+    font.pixelSize: 16
     anchors.centerIn: parent
     color: "white"
   }

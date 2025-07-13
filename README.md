@@ -3,7 +3,7 @@
 <samp> so far </samp>
 
 #### tasks (todo)
-- [ ] finish the simple bar
+- [x] finish the simple bar
 - [ ] create a osd for brightness and volume changes
 - [ ] add settings menu with quick controls
 - [ ] add a simple calendar widget to the time 

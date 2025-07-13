@@ -7,21 +7,21 @@ import qs.config
 import qs.components.common
 
 Rectangle {
-  id: powerroot
-  anchors.verticalCenter: parent.verticalCenter
-  anchors.right: parent.right
-  color: "transparent"
-  width: powericon.implicitWidth + 5
+  id: quicksettingsroot
   height: Config.barHeight / 1.5
+  width: quicksettingsrow.implicitWidth + 10
+  //color: Qt.alpha("#FFFFFF", 0.07)
+  color: "transparent"
+  radius: 2
+  
+  RowLayout {
+    id: quicksettingsrow
+    anchors.fill: parent
+    spacing: -5
 
-  Icon {
-    id: powericon
-    icon: "mode_off_on" 
-    fill: 1
-    grad: 0
-    font.pixelSize: 14
-    anchors.centerIn: parent
-    color: "white"
+    Network {}
+    Bluetooth {}
+    Battery {}
   }
 
   MouseArea {
@@ -30,4 +30,5 @@ Rectangle {
     cursorShape: Qt.PointingHandCursor
     onClicked: Quickshell.execDetached(["wlogout", "-b", "5"])
   }
-}  
+}
+
