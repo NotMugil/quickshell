@@ -7,10 +7,11 @@ import QtQuick
 Singleton {
   id: root
   property string time
+  property string date
 
   Process {
-    id: dateProc
-	command: [ "date", "+%H:%M" ]
+    id: timeProc
+	  command: [ "date", "+%H:%M" ]
     running: true
 
     stdout: StdioCollector {
@@ -18,10 +19,23 @@ Singleton {
     }
   }
 
+  Process {
+    id: dateProc
+	  command: [ "date", "+%B %-d, %A" ]
+    running: true
+
+    stdout: StdioCollector {
+      onStreamFinished: root.date = this.text
+    }
+  }
+
   Timer {
     interval: 1000
     running: true
     repeat: true
-    onTriggered: dateProc.running = true
+    onTriggered: {
+      timeProc.running = true
+      dateProc.running = true
+    } 
   }
 }

@@ -7,16 +7,16 @@ import qs.config
 import qs.components.common
 
 Rectangle {
-  id: homeroot
+  id: powerroot
   anchors.verticalCenter: parent.verticalCenter
   anchors.left: parent.left
   color: "transparent"
-  width: homeicon.implicitWidth + 5
+  width: powericon.implicitWidth + 5
   height: Config.barHeight
 
   Icon {
-    id: homeicon
-    icon: "tile_medium" 
+    id: powericon
+    icon: "mode_off_on" 
     fill: 1
     grad: 0
     font.pixelSize: 18
@@ -28,6 +28,6 @@ Rectangle {
     acceptedButtons: Qt.LeftButton | Qt.RightButton
     anchors.fill: parent
     cursorShape: Qt.PointingHandCursor
-    onClicked: Quickshell.execDetached(["rofi", "-show", "drun", "-theme", "~/.config/rofi/launcher.rasi"])
+    onClicked: Quickshell.execDetached(["wlogout", "-b", "5"])
   }
 }  
