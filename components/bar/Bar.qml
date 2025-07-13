@@ -49,8 +49,6 @@ Scope {
           anchors.fill: parent
           spacing: 6
 
-
-
           // Left widgets
           Rectangle {
             id: leftbarBase
@@ -63,10 +61,9 @@ Scope {
             RowLayout {
               id: leftrow
               anchors.fill: parent
-              spacing: 20
+              spacing: 12
 
               HomeButton {}
-
               Workspaces {}
             }
           }
@@ -89,8 +86,9 @@ Scope {
             RowLayout {
               id: rightrow
               anchors.fill: parent
-              spacing: 20
+              spacing: 12
 
+              QuickSettings {}
               PowerButton {}
             }
 

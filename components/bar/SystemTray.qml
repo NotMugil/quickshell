@@ -11,7 +11,7 @@ Rectangle {
   id: systray
 
   visible: SystemTray.items.values.length
-  height: 10
+  height: Config.barHeight
 
   color: "transparent"
 
