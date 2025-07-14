@@ -10,7 +10,7 @@ import qs.components.common
 Rectangle {
   id: workspacesroot
   color: "transparent"
-  height: Config.barHeight
+  height: Config.barHeight / 1.5
   width: workspacesrow.implicitWidth 
   
   RowLayout {
@@ -25,7 +25,8 @@ Rectangle {
         id: workspaceItem
         width: workspaceText.width + 10
         height: workspacesroot.height
-        color: "transparent"
+        color: Config.buttonBackground == true && modelData.active ? Qt.alpha("#e0e1dd",0.1) : "transparent"
+        radius: 5
 
         StyledText {
           id: workspaceText

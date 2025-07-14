@@ -6,8 +6,8 @@ import QtQuick
 
 Singleton {
   id: root
-  property string time
-  property string date
+  property string time: "00:00"
+  property string date: "January 1, Sunday"
 
   Process {
     id: timeProc

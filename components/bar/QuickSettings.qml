@@ -10,9 +10,8 @@ Rectangle {
   id: quicksettingsroot
   height: Config.barHeight / 1.5
   width: quicksettingsrow.implicitWidth + 10
-  //color: Qt.alpha("#FFFFFF", 0.07)
-  color: "transparent"
-  radius: 2
+  color: Config.buttonBackground == true ? Qt.alpha("#e0e1dd",0.1) : "transparent"
+  radius: 4
   
   RowLayout {
     id: quicksettingsrow

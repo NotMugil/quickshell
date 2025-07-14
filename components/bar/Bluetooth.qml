@@ -10,7 +10,7 @@ Rectangle {
   color: "transparent"
   width: bluetoothicon.implicitWidth + 5
   Layout.fillHeight: true
-  Layout.alignment: Qt.AlignCenter
+  Layout.alignment: Qt.AlignRight
 
   readonly property string bluetoothStatus: BluetoothStatus.btState || "disabled"
 

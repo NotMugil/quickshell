@@ -56,7 +56,7 @@ Scope {
             width: leftrow.implicitWidth
             Layout.fillHeight: true
             Layout.alignment: Qt.AlignVCenter | Qt.AlignLeft
-            Layout.leftMargin: Config.borderThickness
+            Layout.leftMargin: Config.borderThickness != 0 ? Config.borderThickness : 8
 
             RowLayout {
               id: leftrow
@@ -70,7 +70,7 @@ Scope {
 
           // Center widgets
           ClockWidget {
-           // Layout.alignment: Qt.AlignCenter
+            Layout.alignment: Qt.AlignCenter
             anchors.centerIn: parent
           }
 
@@ -81,13 +81,14 @@ Scope {
             width: rightrow.implicitWidth 
             Layout.fillHeight: true
             Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
-            Layout.rightMargin: Config.borderThickness
+            Layout.rightMargin: Config.borderThickness != 0 ? Config.borderThickness : 8
 
             RowLayout {
               id: rightrow
               anchors.fill: parent
-              spacing: 12
-
+              spacing: 10
+              
+              //ClockWidget {}
               QuickSettings {}
               PowerButton {}
             }
