@@ -9,8 +9,8 @@ import qs.components.common
 Rectangle {
   id: homeroot
   anchors.verticalCenter: parent.verticalCenter
-  anchors.left: parent.left
-  color: "transparent"
+  color: Config.buttonBackground == true ? Qt.alpha("#e0e1dd",0.1) : "transparent"
+  radius: 5
   width: homeicon.implicitWidth + 5
   height: Config.barHeight / 1.5
 

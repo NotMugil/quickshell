@@ -13,6 +13,7 @@ Rectangle {
   StyledText {
     id: clock
     text: Time.time
+    horizontalAlignment: Text.AlignRight
   }
 
   MouseArea {

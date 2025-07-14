@@ -10,7 +10,7 @@ Rectangle {
   color: "transparent"
   width: networkicon.implicitWidth + 5
   Layout.fillHeight: true
-  Layout.alignment: Qt.AlignCenter
+  Layout.alignment: Qt.AlignRight
 
   // get the network type
   readonly property string networkType: {

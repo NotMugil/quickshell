@@ -1,5 +1,7 @@
 import QtQuick
 
+import qs.config
+
 Text {
   id: root
   property alias fontSize: root.font.pixelSize

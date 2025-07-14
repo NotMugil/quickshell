@@ -10,13 +10,19 @@ Rectangle {
   color: "transparent"
   width: batteryicon.implicitWidth + 5
   Layout.fillHeight: true
-  Layout.alignment: Qt.AlignCenter
-
-  readonly property string bluetoothStatus: BluetoothStatus.btState || "disabled"
+  Layout.alignment: Qt.AlignRight
 
   function getBatteryStatus() {
     let batState = "bluetooth_disabled"
-    if (BatteryStatus.health == "charged") {
+    if (BatteryStatus.isCharging == "1" && BatteryStatus.health == "full") {
+      batState = "battery_charging_full"
+    } else if (BatteryStatus.isCharging == "1" && BatteryStatus.health == "good") {
+      batState = "battery_charging_50"
+    } else if (BatteryStatus.isCharging == "1" && BatteryStatus.health == "low") {
+      batState = "battery_charging_30"
+    } else if (BatteryStatus.isCharging == "1" && BatteryStatus.health == "caution") {
+      batState = "battery_charging_20"
+    } else if (BatteryStatus.health == "charged") {
       batState = "battery_full"
     } else if (BatteryStatus.health == "full") {
       batState = "battery_4_bar"
@@ -34,10 +40,10 @@ Rectangle {
 
   function getBatteryColor() {
     let batState = "bluetooth_disabled"
-    if (BatteryStatus.health == "charged") {
-      batState = "green"
+    if (BatteryStatus.isCharging == "1") {
+      batState = "white"
     } else if (BatteryStatus.health == "full") {
-      batState = "green"
+      batState = "white"
     } else if (BatteryStatus.health == "good") {
       batState = "white"
     } else if (BatteryStatus.health == "low") {
