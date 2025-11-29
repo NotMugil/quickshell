@@ -8,13 +8,13 @@ import QtQuick
 import Quickshell
 import Quickshell.Io
 
-Singleton { id: root
+Singleton {
+    id: root
 	property string netType
 	property string netStrength
 
 	reloadableId: "network"
 
-	// start network monitor
 	Process {
 		running: true
 		command: ["nmcli", "m"]
@@ -23,8 +23,8 @@ Singleton { id: root
 		}
 	}
 
-	// get wether the connection is wired or wireless
-	Process { id: getNetType
+	Process {
+	    id: getNetType
 		running: true
 		command: ["nmcli", "-g", "STATE,TYPE", "d"]
 		stdout: StdioCollector {
@@ -36,7 +36,6 @@ Singleton { id: root
 		}
 	}
 
-	// get the signal strength of the connection
 	Process { id: getNetStrength
 		running: false
 		command: ["nmcli", "-g", "ACTIVE,SIGNAL", "d", "w"]
@@ -48,7 +47,6 @@ Singleton { id: root
 		}
 	}
 
-	// update the network strength every minute if connection is wireless
 	Timer {
 		interval: 60000
 		running: true

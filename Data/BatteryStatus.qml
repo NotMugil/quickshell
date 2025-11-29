@@ -3,7 +3,7 @@ pragma Singleton
 import Quickshell
 import Quickshell.Services.UPower
 
-Singleton { 
+Singleton {
   id:root
   readonly property bool isCharging: (!UPower.onBattery)
   readonly property int percentage: UPower.displayDevice.percentage*100

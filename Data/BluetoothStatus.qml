@@ -8,12 +8,12 @@ import QtQuick
 import Quickshell
 import Quickshell.Io
 
-Singleton { id: root
+Singleton {
+    id: root
 	property bool powered
 	property bool paired: (devices.length)
 	property list<string> devices
 
-	// start bluetooth monitor
 	Process {
 		running: true
 		command: ["bluetoothctl"]
@@ -25,8 +25,8 @@ Singleton { id: root
 		}
 	}
 
-	// get bluetooth info
-	Process { id: blueInfo
+	Process {
+	    id: blueInfo
 		running: true
 		command: ["bluetoothctl", "show"]
 		stdout: StdioCollector {
@@ -37,8 +37,8 @@ Singleton { id: root
 		}
 	}
 
-	// get paired devices
-	Process { id: blueDevices
+	Process {
+	    id: blueDevices
 		running: true
 		command: ["bluetoothctl", "devices", "Connected"]
 		stdout: StdioCollector {

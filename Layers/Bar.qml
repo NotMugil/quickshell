@@ -4,15 +4,13 @@ import QtQuick
 import QtQuick.Layouts
 import Qt5Compat.GraphicalEffects
 
-import qs.config
-import qs.components.common
-import qs.components.bar
+import qs.Components as Com
+import qs.Data as Data
 
 Scope {
-  id: bar
+  id: barrr
 
   Variants {
-    model: Quickshell.screens
 
     Process {
         id: process
@@ -24,16 +22,18 @@ Scope {
         }
     }
 
-    PanelWindow {
-      property var modelData
+    model: Quickshell.screens
+    delegate: PanelWindow {
       screen: modelData
 
+      property var modelData
+      property var cfg: Data.Config.data.settings
       color: "transparent"
-      implicitHeight: Config.barHeight
-      
+      implicitHeight: cfg.bar.barHeight
+
       anchors {
-        top: Config.barPosition === "top" ? true : false
-        bottom: Config.barPosition === "bottom" ? true : false
+        top: cfg.bar.barPosition === "top" ? true : false
+        bottom: cfg.bar.barPosition === "bottom" ? true : false
         left: true
         right: true
       }
@@ -43,6 +43,13 @@ Scope {
         width: parent.width
         height: parent.height
         color: "transparent"
+
+        Rectangle {
+            id: barBg
+            width: parent.width
+            height: parent.height
+            color: cfg.bar.barColor
+        }
 
         RowLayout {
           id: row
@@ -56,20 +63,20 @@ Scope {
             width: leftrow.implicitWidth
             Layout.fillHeight: true
             Layout.alignment: Qt.AlignVCenter | Qt.AlignLeft
-            Layout.leftMargin: Config.borderThickness != 0 ? Config.borderThickness : 8
+            Layout.leftMargin: cfg.bar.borderThickness != 0 ? cfg.bar.borderThickness : 8
 
             RowLayout {
               id: leftrow
               anchors.fill: parent
               spacing: 12
 
-              HomeButton {}
-              Workspaces {}
+              Com.HomeButton {}
+              Com.Workspaces {}
             }
           }
 
           // Center widgets
-          ClockWidget {
+          Com.ClockWidget {
             Layout.alignment: Qt.AlignCenter
             anchors.centerIn: parent
           }
@@ -78,19 +85,18 @@ Scope {
           Rectangle {
             id: rightbarBase
             color: "transparent"
-            width: rightrow.implicitWidth 
+            width: rightrow.implicitWidth
             Layout.fillHeight: true
             Layout.alignment: Qt.AlignVCenter | Qt.AlignRight
-            Layout.rightMargin: Config.borderThickness != 0 ? Config.borderThickness : 8
+            Layout.rightMargin: cfg.bar.borderThickness != 0 ? cfg.bar.borderThickness : 8
 
             RowLayout {
               id: rightrow
               anchors.fill: parent
               spacing: 10
-              
-              //ClockWidget {}
-              QuickSettings {}
-              PowerButton {}
+
+              Com.QuickSettings {}
+              Com.PowerButton {}
             }
 
           }

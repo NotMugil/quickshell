@@ -1,19 +1,23 @@
 import QtQuick
 
-import qs.components.common
-import qs.config
+import qs.Components as Com
+import qs.Data as Data
+
 
 Rectangle {
+
+  property var cfg: Data.Config.data.settings
+
   id: clockroot
   anchors.verticalCenter: parent.verticalCenter
   width: clock.implicitWidth + 5
-  height: Config.barHeight
-  color: "transparent" 
+  height: cfg.bar.barHeight
+  color: "transparent"
 
-  StyledText {
+  Com.StyledText {
+    anchors.fill: parent
     id: clock
-    text: Time.time
-    horizontalAlignment: Text.AlignRight
+    text: Data.Time.time
   }
 
   MouseArea {
@@ -26,11 +30,11 @@ Rectangle {
     }
 
     onEntered: {
-      clock.text = Time.date
+      clock.text = Data.Time.date
     }
 
     onExited: {
-      clock.text = Time.time
+      clock.text = Data.Time.time
     }
   }
 }

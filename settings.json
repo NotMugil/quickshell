@@ -1,0 +1,21 @@
+{
+    "mousePsystem": false,
+    "reservedShell": false,
+    "setWallpaper": true,
+    "settings": {
+        "bar": {
+            "barColor": "#b0000000",
+            "barHeight": 30,
+            "barOpacity": 0.2,
+            "barPosition": "top",
+            "borderThickness": 10,
+            "buttonBg": true,
+            "cornerRadius": 14,
+            "fontSize": 12,
+            "monochromeTrayIcons": true,
+            "trayIconSize": 16
+        }
+    },
+    "wallFgLayer": false,
+    "wallSrc": "file:///home/rei/Pictures/Wallpapers/samurai.jpg"
+}

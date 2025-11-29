@@ -13,6 +13,6 @@ ShellRoot {
   id: root
 
   Component.onCompleted: Config
-  Wallpaper {} 
+  Wallpaper {}
   Bar {}
 }

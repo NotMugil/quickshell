@@ -36,6 +36,6 @@ Singleton {
     onTriggered: {
       timeProc.running = true
       dateProc.running = true
-    } 
+    }
   }
 }

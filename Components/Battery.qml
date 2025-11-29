@@ -2,8 +2,8 @@ import Quickshell
 import QtQuick
 import QtQuick.Layouts
 
-import qs.config
-import qs.components.common
+import qs.Components as Com
+import qs.Data as Data
 
 Rectangle {
   id: batteryRoot
@@ -14,23 +14,23 @@ Rectangle {
 
   function getBatteryStatus() {
     let batState = "bluetooth_disabled"
-    if (BatteryStatus.isCharging == "1" && BatteryStatus.health == "full") {
+    if (Data.BatteryStatus.isCharging == "1" && Data.BatteryStatus.health == "full") {
       batState = "battery_charging_full"
-    } else if (BatteryStatus.isCharging == "1" && BatteryStatus.health == "good") {
+    } else if (Data.BatteryStatus.isCharging == "1" && Data.BatteryStatus.health == "good") {
       batState = "battery_charging_50"
-    } else if (BatteryStatus.isCharging == "1" && BatteryStatus.health == "low") {
+    } else if (Data.BatteryStatus.isCharging == "1" && Data.BatteryStatus.health == "low") {
       batState = "battery_charging_30"
-    } else if (BatteryStatus.isCharging == "1" && BatteryStatus.health == "caution") {
+    } else if (Data.BatteryStatus.isCharging == "1" && Data.BatteryStatus.health == "caution") {
       batState = "battery_charging_20"
-    } else if (BatteryStatus.health == "charged") {
+    } else if (Data.BatteryStatus.health == "charged") {
       batState = "battery_full"
-    } else if (BatteryStatus.health == "full") {
+    } else if (Data.BatteryStatus.health == "full") {
       batState = "battery_4_bar"
-    } else if (BatteryStatus.health == "good") {
+    } else if (Data.BatteryStatus.health == "good") {
       batState = "battery_3_bar"
-    } else if (BatteryStatus.health == "low") {
+    } else if (Data.BatteryStatus.health == "low") {
       batState = "battery_2_bar"
-    } else if (BatteryStatus.health == "caution") {
+    } else if (Data.BatteryStatus.health == "caution") {
       batState = "battery_1_bar"
     } else {
       batState = "battery_0_bar"
@@ -40,15 +40,15 @@ Rectangle {
 
   function getBatteryColor() {
     let batState = "bluetooth_disabled"
-    if (BatteryStatus.isCharging == "1") {
+    if (Data.BatteryStatus.isCharging == "1") {
       batState = "white"
-    } else if (BatteryStatus.health == "full") {
+    } else if (Data.BatteryStatus.health == "full") {
       batState = "white"
-    } else if (BatteryStatus.health == "good") {
+    } else if (Data.BatteryStatus.health == "good") {
       batState = "white"
-    } else if (BatteryStatus.health == "low") {
-      batState = "white"
-    } else if (BatteryStatus.health == "caution") {
+    } else if (Data.BatteryStatus.health == "low") {
+      batState = "yellow"
+    } else if (Data.BatteryStatus.health == "caution") {
       batState = "red"
     } else {
       batState = "white"
@@ -56,7 +56,7 @@ Rectangle {
     return batState;
   }
 
-  Icon {
+  Com.Icon {
     id: batteryicon
     icon: getBatteryStatus()
     fill: 1

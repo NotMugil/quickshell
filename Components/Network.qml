@@ -2,8 +2,8 @@ import QtQuick
 import Quickshell
 import QtQuick.Layouts
 
-import qs.config
-import qs.components.common
+import qs.Components as Com
+import qs.Data as Data
 
 Rectangle {
   id: networkroot
@@ -12,19 +12,18 @@ Rectangle {
   Layout.fillHeight: true
   Layout.alignment: Qt.AlignRight
 
-  // get the network type
   readonly property string networkType: {
 	let type = "disconnected"
-	if (NetworkStatus.netType) {
-	  type = NetworkStatus.netType
+	if (Data.NetworkStatus.netType) {
+	  type = Data.NetworkStatus.netType
 	}
 	return type;
   }
-  // get the signal strength if the connection is wireless
+
   readonly property int networkStrength: {
 	let strength = 0
 	if (networkType === 'wifi') {
-	  strength = Math.round(NetworkStatus.netStrength /25) *25;	// round the signal strength to the nearest quarter
+	  strength = Math.round(Data.NetworkStatus.netStrength /25) *25;
 	}
 	return strength;
   }
@@ -44,11 +43,11 @@ Rectangle {
       } else {
         return "signal_wifi_4_bar";
       }
-    } 
+    }
     return "wifi_find";
   }
 
-  Icon {
+  Com.Icon {
     id: networkicon
     icon: getNetworkStatus()
     fill: 1

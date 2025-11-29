@@ -1,36 +1,36 @@
 import Quickshell
-import Quickshell.Hyprland
 import Quickshell.Io
+import Quickshell.I3
 import QtQuick
 import QtQuick.Layouts
 
-import qs.config
-import qs.components.common
+import qs.Components as Com
+import qs.Data as Data
 
 Rectangle {
   id: workspacesroot
   color: "transparent"
-  height: Config.barHeight / 1.5
-  width: workspacesrow.implicitWidth 
-  
+  height: cfg.bar.barHeight / 1.5
+  width: workspacesrow.implicitWidth
+
   RowLayout {
     id: workspacesrow
     anchors.fill: parent
     spacing: 4
 
     Repeater {
-      model: Hyprland.workspaces
+      model: I3.workspaces
 
       delegate: Rectangle {
         id: workspaceItem
         width: workspaceText.width + 10
         height: workspacesroot.height
-        color: Config.buttonBackground == true && modelData.active ? Qt.alpha("#e0e1dd",0.1) : "transparent"
+        color: cfg.bar.buttonBackground == true && modelData.active ? Qt.alpha("#e0e1dd",0.1) : "transparent"
         radius: 5
 
         StyledText {
           id: workspaceText
-          text: modelData.id
+          text: modelData.num
           anchors.centerIn: parent
           color: modelData.active ? "white" : Qt.alpha("#FFFFFF", 0.420)
         }
@@ -54,9 +54,9 @@ Rectangle {
       // todo: fix the scroll sensitivity for trackpad or disable it
       onWheel: {
         if (wheel.angleDelta.y > 0) {
-          Quickshell.execDetached(["hyprctl", "dispatch", "workspace", "e+1"])
+          Quickshell.execDetached(["swaymsg", "workspace", "next"])
         } else if (wheel.angleDelta.y < 0) {
-          Quickshell.execDetached(["hyprctl", "dispatch", "workspace", "e-1"])
+          Quickshell.execDetached(["swaymsg", "workspace", "prev"])
         }
       }
     }
