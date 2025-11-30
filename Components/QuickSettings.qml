@@ -13,8 +13,8 @@ Rectangle {
   id: quicksettingsroot
   height: cfg.bar.barHeight / 1.5
   width: quicksettingsrow.implicitWidth + 10
-  color: cfg.bar.buttonBg == true ? Qt.alpha("#e0e1dd",0.1) : "transparent"
-  radius: 4
+  color: cfg.bar.buttonBg == true ? clr.current.buttonBg : "transparent"
+  radius: cfg.bar.buttonRadius
 
   RowLayout {
     id: quicksettingsrow

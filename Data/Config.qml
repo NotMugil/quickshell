@@ -44,6 +44,7 @@ Singleton {
                 property string barColor: Qt.rgba(0, 0, 0, 0.69)
                 property real barOpacity: 0.9
                 property int cornerRadius: 14
+                property int buttonRadius: 5
             }
         }
     }

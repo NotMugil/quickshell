@@ -8,6 +8,9 @@ import qs.Components as Com
 import qs.Data as Data
 
 Rectangle {
+  property var cfg: Data.Config.data.settings
+  property var clr: Data.Colors
+
   id: workspacesroot
   color: "transparent"
   height: cfg.bar.barHeight / 1.5
@@ -25,14 +28,14 @@ Rectangle {
         id: workspaceItem
         width: workspaceText.width + 10
         height: workspacesroot.height
-        color: cfg.bar.buttonBackground == true && modelData.active ? Qt.alpha("#e0e1dd",0.1) : "transparent"
-        radius: 5
+        color: cfg.bar.buttonBg == true && modelData.active ? clr.current.buttonBg : "transparent"
+        radius: cfg.bar.buttonRadius
 
         StyledText {
           id: workspaceText
           text: modelData.num
           anchors.centerIn: parent
-          color: modelData.active ? "white" : Qt.alpha("#FFFFFF", 0.420)
+          color: modelData.active ? clr.current.primary_fixed : Qt.alpha(clr.current.primary_fixed, 0.420)
         }
 
         MouseArea {

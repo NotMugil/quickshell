@@ -7,14 +7,15 @@ import qs.Components as Com
 import qs.Data as Data
 
 Rectangle {
+  property var cfg: Data.Config.data.settings
+  property var clr: Data.Colors
+
   id: powerroot
   anchors.verticalCenter: parent.verticalCenter
-  color: cfg.bar.buttonBg == true ? Qt.alpha("#e0e1dd",0.1) : "transparent"
-  radius: 5
+  color: cfg.bar.buttonBg == true ? clr.current.buttonBg : "transparent"
+  radius: cfg.bar.buttonRadius
   width: powericon.implicitWidth + 5
   height: cfg.bar.barHeight / 1.5
-
-  // border.color: "red"
 
   Com.Icon {
     anchors.fill: centerI

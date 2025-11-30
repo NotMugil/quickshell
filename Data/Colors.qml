@@ -42,6 +42,7 @@ Singleton {
         property JsonObject dark: JsonObject {
           id: dark
 
+          property string buttonBg: Qt.rgba(0.88, 0.88, 0.86, 0.1)
           property string background: "#121318"
           property string error: "#ffb4ab"
           property string error_container: "#93000a"
@@ -94,6 +95,7 @@ Singleton {
         property JsonObject light: JsonObject {
           id: light
 
+          property string buttonBg: Qt.rgba(0, 0, 0, 0.08)
           property string background: "#f4fafb"
           property string error: "#ba1a1a"
           property string error_container: "#ffdad6"

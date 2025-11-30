@@ -5,7 +5,6 @@ import qs.Data as Data
 
 
 Rectangle {
-
   property var cfg: Data.Config.data.settings
 
   id: clockroot

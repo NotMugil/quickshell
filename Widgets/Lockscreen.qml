@@ -1,3 +1,5 @@
+// from rexcrazy804's config
+
 // heavily referenced soramane's lockscreen code
 // https://github.com/caelestia-dots/shell/tree/main/modules/lock
 pragma ComponentBehavior: Bound
@@ -440,6 +442,10 @@ WlSessionLockSurface {
             Layout.preferredHeight: cfg.bar.barHeight
             Layout.fillWidth: true
             color: cfg.bar.barColor
+
+            Com.Quotes {
+
+            }
 
             Canvas {
                 anchors { left: parent.left; right: parent.right; top: parent.top }
