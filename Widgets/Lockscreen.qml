@@ -18,7 +18,7 @@ WlSessionLockSurface {
   id: surface
   property bool error: false
   property string inputBuffer: ""
-  readonly property list<string> kokomi: ["aw", "ma", "nc", "re", "ep", "er"]
+  readonly property list<string> code: ["a", "w", "w", "w", "m", "a", "n"]
   required property WlSessionLock lock
   property string maskedBuffer: ""
   property bool unlocking: false
@@ -55,8 +55,8 @@ WlSessionLockSurface {
   Item {
     anchors.centerIn: parent
     clip: true
-    height: kokomiText.contentHeight
-    width: (pam.active) ? 0 : kokomiText.contentWidth
+    height: barCode.contentHeight
+    width: (pam.active) ? 0 : barCode.contentWidth
 
     Behavior on width {
       NumberAnimation {
@@ -68,7 +68,7 @@ WlSessionLockSurface {
     Rectangle {
       id: gradient
 
-      anchors.fill: kokomiText
+      anchors.fill: barCode
       visible: false
 
       gradient: Gradient {
@@ -85,7 +85,7 @@ WlSessionLockSurface {
     }
 
     Text {
-      id: kokomiText
+      id: barCode
 
       anchors.centerIn: parent
       anchors.verticalCenterOffset: contentHeight * 0.2
@@ -103,7 +103,7 @@ WlSessionLockSurface {
     MultiEffect {
       anchors.fill: gradient
       maskEnabled: true
-      maskSource: kokomiText
+      maskSource: barCode
       maskSpreadAtMin: 1.0
       maskThresholdMax: 1.0
       maskThresholdMin: 0.5
@@ -205,7 +205,7 @@ WlSessionLockSurface {
 
       if (kevent.text) {
         surface.inputBuffer += kevent.text;
-        surface.maskedBuffer += surface.kokomi[Math.floor(Math.random() * 6)];
+        surface.maskedBuffer += surface.code[Math.floor(Math.random() * 6)];
       }
     }
 
@@ -443,9 +443,7 @@ WlSessionLockSurface {
             Layout.fillWidth: true
             color: cfg.bar.barColor
 
-            Com.Quotes {
-
-            }
+            Com.Quotes {}
 
             Canvas {
                 anchors { left: parent.left; right: parent.right; top: parent.top }
@@ -466,6 +464,7 @@ WlSessionLockSurface {
         }
     }
 
+  Wid.Clock {}
 
   PamContext {
     id: pam

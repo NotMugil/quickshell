@@ -10,12 +10,13 @@ Rectangle {
   id: clockroot
   anchors.verticalCenter: parent.verticalCenter
   width: clock.implicitWidth + 5
-  height: cfg.bar.barHeight
+  height: cfg.bar.barHeight * 0.65
   color: "transparent"
 
   Com.StyledText {
     anchors.fill: parent
     id: clock
+    fontSize: cfg.bar.barHeight * 0.35
     text: Data.Time.time
   }
 

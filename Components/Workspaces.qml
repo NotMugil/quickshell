@@ -13,7 +13,7 @@ Rectangle {
 
   id: workspacesroot
   color: "transparent"
-  height: cfg.bar.barHeight / 1.5
+  height: cfg.bar.barHeight * 0.65
   width: workspacesrow.implicitWidth
 
   RowLayout {
@@ -26,7 +26,7 @@ Rectangle {
 
       delegate: Rectangle {
         id: workspaceItem
-        width: workspaceText.width + 10
+        width: workspaceText.width * 2
         height: workspacesroot.height
         color: cfg.bar.buttonBg == true && modelData.active ? clr.current.buttonBg : "transparent"
         radius: cfg.bar.buttonRadius
@@ -57,9 +57,9 @@ Rectangle {
       // todo: fix the scroll sensitivity for trackpad or disable it
       onWheel: {
         if (wheel.angleDelta.y > 0) {
-          Quickshell.execDetached(["swaymsg", "workspace", "next"])
+          Data.SessionActions.nextws()
         } else if (wheel.angleDelta.y < 0) {
-          Quickshell.execDetached(["swaymsg", "workspace", "prev"])
+          Data.SessionActions.prevws()
         }
       }
     }

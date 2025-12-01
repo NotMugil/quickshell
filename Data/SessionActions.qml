@@ -23,4 +23,16 @@ Singleton {
     Quickshell.execDetached(["loginctl", "lock-session"]);
     Quickshell.execDetached(["systemctl", "suspend"]);
   }
+
+  function quicksettings() {
+    Quickshell.execDetached(["loginctl", "lock-session"]);
+  }
+
+  function nextws() {
+    Quickshell.execDetached(["swaymsg", "workspace", "next"])
+  }
+
+  function prevws() {
+    Quickshell.execDetached(["swaymsg", "workspace", "prev"])
+  }
 }

@@ -8,9 +8,12 @@ import qs.Data as Data
 Rectangle {
   id: bluetoothRoot
   color: "transparent"
-  width: bluetoothicon.implicitWidth + 5
-  Layout.fillHeight: true
+  width: cfg.bar.barHeight * 0.65
+  height: cfg.bar.barHeight * 0.65
   Layout.alignment: Qt.AlignRight
+
+   // border.color: "red"
+
 
   readonly property string bluetoothStatus: Data.BluetoothStatus.btState || "disabled"
 
@@ -31,8 +34,9 @@ Rectangle {
     icon: getBluetoothStatus()
     fill: 1
     grad: 0
-    font.pixelSize: 14
+    font.pixelSize: parent.width * 0.73
     anchors.centerIn: parent
+    anchors.verticalCenter: parent
     color: Data.BluetoothStatus.powered ? "white" : Qt.alpha("#F9F9F9", 0.6)
   }
 }

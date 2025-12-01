@@ -1,4 +1,5 @@
 import QtQuick
+import QtQuick.Layouts
 import Quickshell
 import Quickshell.Wayland
 
@@ -58,6 +59,29 @@ Scope {
             }
         }
 
+        Image {
+            id: fg
+            opacity: 0
+            anchors.fill: parent
+            anchors.topMargin: -cfg.bar.barHeight
+            anchors.bottomMargin: -cfg.bar.barHeight
+            antialiasing: true
+            fillMode: Image.PreserveAspectCrop
+            layer.enabled: true
+            layer.smooth: true
+            mipmap: true
+            smooth: true
+            source: Data.Config.wallFg
+            // Don't show the fg if fg is being generated
+            visible: !Data.Config.fgGenProc.running
+
+            Component.onCompleted: {
+                walAnimation.finished.connect(function() {
+                    fg.opacity = 1;
+                });
+            }
+        }
+
         Rectangle {
             id: animatinRect
 
@@ -68,25 +92,25 @@ Scope {
             width: 0
 
             NumberAnimation {
-            id: walAnimation
+                id: walAnimation
 
-            duration: Data.MaterialEasing.emphasizedTime * 5
-            easing.bezierCurve: Data.MaterialEasing.emphasized
-            from: 0
-            property: "width"
-            target: animatinRect
-            to: Math.max(layerRoot.screen.width)
+                duration: Data.MaterialEasing.emphasizedTime * 5
+                easing.bezierCurve: Data.MaterialEasing.emphasized
+                from: 0
+                property: "width"
+                target: animatinRect
+                to: Math.max(layerRoot.screen.width)
             }
 
             Widget.Wallpaper {
-            id: animatingWal
+                id: animatingWal
 
-            anchors.right: parent.right
-            height: layerRoot.height
-            source: ""
-            width: layerRoot.width
+                anchors.right: parent.right
+                height: layerRoot.height
+                source: ""
+                width: layerRoot.width
             }
         }
-        }
+    }
     }
 }

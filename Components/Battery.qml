@@ -8,9 +8,11 @@ import qs.Data as Data
 Rectangle {
   id: batteryRoot
   color: "transparent"
-  width: batteryicon.implicitWidth + 5
-  Layout.fillHeight: true
+  width: cfg.bar.barHeight * 0.65
+  height: cfg.bar.barHeight * 0.65
   Layout.alignment: Qt.AlignRight
+
+//  border.color: "red"
 
   function getBatteryStatus() {
     let batState = "bluetooth_disabled"
@@ -61,9 +63,9 @@ Rectangle {
     icon: getBatteryStatus()
     fill: 1
     grad: 0
-    font.pixelSize: 14
-    anchors.left: parent.left
-    anchors.verticalCenter: parent.verticalCenter
+    font.pixelSize: parent.width * 0.73
+    anchors.centerIn: parent
+    anchors.verticalCenter: parent
     color: getBatteryColor()
   }
 }

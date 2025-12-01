@@ -11,7 +11,7 @@ Singleton {
 
   Process {
     id: timeProc
-	  command: [ "date", "+%H:%M" ]
+	command: [ "date", "+%H:%M" ]
     running: true
 
     stdout: StdioCollector {
@@ -21,7 +21,7 @@ Singleton {
 
   Process {
     id: dateProc
-	  command: [ "date", "+%B %-d, %A" ]
+	command: [ "date", "+%B %-d, %A" ]
     running: true
 
     stdout: StdioCollector {

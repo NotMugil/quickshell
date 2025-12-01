@@ -34,20 +34,29 @@ Singleton {
 
         property JsonObject settings: JsonObject {
             property JsonObject bar: JsonObject {
-                property int fontSize: 12
-                property int trayIconSize: 16
                 property bool monochromeTrayIcons: true
-                property string barPosition: "top"
-                property bool buttonBg: true
-                property int borderThickness: 10
+                property int fontSize: 14
+                property int trayIconSize: 16
                 property int barHeight: 30
-                property string barColor: Qt.rgba(0, 0, 0, 0.69)
                 property real barOpacity: 0.9
+                property string barPosition: "top"
+                property string barColor: Qt.rgba(0, 0, 0, 0.69)
                 property int cornerRadius: 14
+                property bool buttonBg: true
                 property int buttonRadius: 5
+                property int borderThickness: 10
+            }
+
+            property JsonObject lock: JsonObject {
+                property int timeFontSize: 64
+                property int dateFontSize: 11
+                property int spacing: -12
+                property bool shadow: true
+                property string fontFamily: "RedHatDisplay"
             }
         }
     }
+
   }
 
   IpcHandler {

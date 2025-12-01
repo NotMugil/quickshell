@@ -11,7 +11,7 @@ Rectangle {
   property var cfg: Data.Config.data.settings
 
   id: quicksettingsroot
-  height: cfg.bar.barHeight / 1.5
+  height: cfg.bar.barHeight * 0.65
   width: quicksettingsrow.implicitWidth + 10
   color: cfg.bar.buttonBg == true ? clr.current.buttonBg : "transparent"
   radius: cfg.bar.buttonRadius
@@ -19,8 +19,9 @@ Rectangle {
   RowLayout {
     id: quicksettingsrow
     anchors.fill: parent
-    spacing: -5
-
+    anchors.leftMargin: cfg.bar.barHeight * 0.1
+    anchors.rightMargin: cfg.bar.barHeight * 0.1
+    spacing: 0
     Com.Network {}
     Com.Bluetooth {}
     Com.Battery {}
@@ -30,6 +31,6 @@ Rectangle {
     acceptedButtons: Qt.LeftButton | Qt.RightButton
     anchors.fill: parent
     cursorShape: Qt.PointingHandCursor
-    onClicked: Quickshell.execDetached(["gnome-settings-daemon"])
+    onClicked: Data.SessionActions.quicksettings()
   }
 }

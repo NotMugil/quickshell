@@ -8,9 +8,11 @@ import qs.Data as Data
 Rectangle {
   id: networkroot
   color: "transparent"
-  width: networkicon.implicitWidth + 5
-  Layout.fillHeight: true
+  width: cfg.bar.barHeight * 0.65
+  height: width
   Layout.alignment: Qt.AlignRight
+
+  // border.color: "red"
 
   readonly property string networkType: {
 	let type = "disconnected"
@@ -52,8 +54,9 @@ Rectangle {
     icon: getNetworkStatus()
     fill: 1
     grad: 0
-    font.pixelSize: 14
+    font.pixelSize: parent.width * 0.73
     anchors.centerIn: parent
+    anchors.verticalCenter: parent
     color: networkType == "disconnected" ? Qt.alpha("#f9f9f9", 0.7) : "white"
   }
 }

@@ -6,16 +6,24 @@
         "bar": {
             "barColor": "#b0000000",
             "barHeight": 30,
-            "barOpacity": 0.2,
+            "barOpacity": 0.9,
             "barPosition": "top",
             "borderThickness": 10,
             "buttonBg": true,
+            "buttonRadius": 5,
             "cornerRadius": 14,
-            "fontSize": 12,
+            "fontSize": 14,
             "monochromeTrayIcons": true,
             "trayIconSize": 16
+        },
+        "lock": {
+            "dateFontSize": 12,
+            "fontFamily": "RedHatDisplay",
+            "shadow": true,
+            "spacing": -10,
+            "timeFontSize": 64
         }
     },
     "wallFgLayer": false,
-    "wallSrc": "file:///home/rei/Pictures/Wallpapers/samurai.jpg"
+    "wallSrc": "file:///home/rei/Pictures/Wallpapers/wallhaven-vpmd6m.jpg"
 }

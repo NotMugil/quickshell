@@ -1,5 +1,11 @@
 import QtQuick
+import QtQuick.Layouts
+
+import Quickshell
+import Quickshell.Wayland
+
 import qs.Data as Data
+import qs.Components as Com
 
 Image {
   antialiasing: true

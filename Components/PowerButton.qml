@@ -14,16 +14,16 @@ Rectangle {
   anchors.verticalCenter: parent.verticalCenter
   color: cfg.bar.buttonBg == true ? clr.current.buttonBg : "transparent"
   radius: cfg.bar.buttonRadius
-  width: powericon.implicitWidth + 5
-  height: cfg.bar.barHeight / 1.5
+  width: cfg.bar.barHeight * 0.65
+  height: cfg.bar.barHeight * 0.65
 
   Com.Icon {
-    anchors.fill: centerI
+    anchors.fill: centerIn
     id: powericon
     icon: "mode_off_on"
     fill: 1
     grad: 0
-    font.pixelSize: 14
+    font.pixelSize: parent.width * 0.73
     anchors.centerIn: parent
     color: "white"
   }
