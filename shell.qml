@@ -5,8 +5,14 @@ pragma ComponentBehavior: Bound
 import Quickshell
 import Quickshell.Io
 import QtQuick
-import qs.Layers as Lay
-import qs.Data as Data
+
+import qs.windows.bar
+import qs.windows.lockscreen
+import qs.windows.osdpanel
+import qs.windows.quicksettings
+import qs.windows.wallpaper
+
+import qs.data as Data
 
 ShellRoot {
   Variants {
@@ -15,7 +21,18 @@ ShellRoot {
     Scope {
         id: scopeRoot
 
-        // inhibit the reload popup
+        Bar {}
+        QuickSettings {}
+        Lockscreen {}
+        LazyLoader {
+            activeAsync: Data.Config.data.showOsd
+            component: OsdPanel {}
+        }
+        LazyLoader {
+            activeAsync: Data.Config.data.setWallpaper
+            component: Wallpaper {}
+        }
+
         Connections {
             function onReloadCompleted() {
                 Quickshell.inhibitReloadPopup();
@@ -27,16 +44,6 @@ ShellRoot {
 
             target: Quickshell
         }
-
-        Lay.Bar {}
-        LazyLoader {
-            activeAsync: Data.Config.data.setWallpaper
-            component: Lay.Wallpaper {}
-        }
-
-    Lay.Lockscreen {
-    }
     }
   }
-
 }

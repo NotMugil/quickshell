@@ -1,0 +1,13 @@
+import QtQuick
+pragma Singleton
+pragma ComponentBehavior: Bound
+import Quickshell
+
+Item {
+    id: root
+
+    property bool launcherOpen: false
+    property bool powerMenuOpen: false
+    property bool controlCenterOpen: false
+    property bool mediaPlayerOpen: false
+}
